@@ -39,7 +39,7 @@
 {{- $badge := "AI 브리핑" -}}
 {{- if ne $cat "" -}}{{- $badge = printf "AI 브리핑 · %s" $cat -}}{{- end -}}
 {{- $bw := add 52 (mul (strings.RuneCount $badge) 17) -}}
-<svg class="gen-card" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{{ $title | htmlEscape }}">
+<svg class="gen-card" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{{ $title }}">
     <defs>
         <linearGradient id="gc{{ $uid }}" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="{{ $p.c1 }}"/>
@@ -51,9 +51,9 @@
     <circle cx="1160" cy="570" r="190" fill="#ffffff" opacity="0.05"/>
     <circle cx="60" cy="620" r="150" fill="#000000" opacity="0.12"/>
     <rect x="72" y="96" width="{{ $bw }}" height="48" rx="24" fill="#ffffff" opacity="0.16"/>
-    <text x="98" y="128" font-family="Pretendard Variable, Pretendard, 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="24" font-weight="600" fill="#ffffff">{{ $badge | htmlEscape }}</text>
+    <text x="98" y="128" font-family="Pretendard Variable, Pretendard, 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="24" font-weight="600" fill="#ffffff">{{ $badge }}</text>
     {{- range $i, $l := $lines }}
-    <text x="72" y="{{ add $y0 (mul $i 84) }}" font-family="Pretendard Variable, Pretendard, 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="62" font-weight="700" fill="#ffffff">{{ $l | htmlEscape }}</text>
+    <text x="72" y="{{ add $y0 (mul $i 84) }}" font-family="Pretendard Variable, Pretendard, 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="62" font-weight="700" fill="#ffffff">{{ $l }}</text>
     {{- end }}
     <text x="72" y="562" font-family="Pretendard Variable, Pretendard, 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="26" fill="#ffffff" opacity="0.85">{{ $date }}</text>
     <text x="1128" y="562" text-anchor="end" font-family="Pretendard Variable, Pretendard, 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="28" font-weight="700" fill="#ffffff">AI 브리핑</text>
