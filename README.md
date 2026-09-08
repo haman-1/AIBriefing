@@ -33,15 +33,15 @@ tags: ["ChatGPT"]
 
 ## 최초 배포 절차 (한 번만)
 
-1. **GitHub에서 새 저장소 생성** — 이름: `aidaily` (빈 저장소, README 생성 안 함)
+1. **GitHub에서 새 저장소 생성** — 이름: `AIBriefing` (빈 저장소, README 생성 안 함)
 2. 원격 연결 및 푸시:
    ```powershell
-   git remote add origin https://github.com/<사용자명>/aidaily.git
+   git remote add origin https://github.com/haman-1/AIBriefing.git
    git push -u origin main
    ```
 3. **저장소 Settings → Pages → Source를 "GitHub Actions"로 변경** ← 필수!
 4. Actions 탭에서 "Deploy Hugo site to Pages" 워크플로가 초록불인지 확인
-5. `https://<사용자명>.github.io/aidaily/` 접속 확인
+5. `https://haman-1.github.io/AIBriefing/` 접속 확인
 
 > ⚠️ `hugo.toml`의 `baseURL` 플레이스홀더는 배포 워크플로가 GitHub Pages 설정에서
 > 자동으로 실제 주소로 덮어써 배포합니다. 다만 커스텀 도메인으로 전환할 때는
