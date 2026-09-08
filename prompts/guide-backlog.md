@@ -10,7 +10,7 @@
 |---|---|---|---|---|
 | ✅ | Gemini 3.8 Flash 가격·사용법 총정리 | gemini flash 가격 | 모델 | 발행: `gemini-3-8-flash-guide.md` (2026-09-08) |
 | ✅ | 회계사가 쓰는 ChatGPT 프롬프트 10개 | 회계 chatgpt 프롬프트 | 산업 | 발행: `chatgpt-prompts-for-accountants.md` (2026-09-08) |
-| ⬜ | ChatGPT 엑셀 수식 자동 작성 가이드 | chatgpt 엑셀 수식 | 산업 | "엑셀 자동화" 전체가 아니라 작업 단위로 좁힘 |
+| ✅ | ChatGPT 엑셀 수식 자동 작성 가이드 | chatgpt 엑셀 수식 | 산업 | 발행: `chatgpt-excel-formulas-guide.md` (2026-09-08). =COPILOT 폐지(9/14) 대안 포함 |
 | ⬜ | ChatGPT vs Gemini vs Claude — 2026년 9월 기준 비교 | chatgpt gemini 비교 | 모델 | 분기 1회 갱신 운영 → 최신성 신호 유지. AdSense 승인 후 제휴 가능 |
 | ⬜ | ChatGPT 보고서 요약 프롬프트·절차 | gpt 보고서 요약 | 산업 | 회의록·메일로 시리즈 확장 여지 |
 
