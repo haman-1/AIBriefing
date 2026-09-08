@@ -1,0 +1,60 @@
+{{- /* 제목·카테고리 기반 커버 카드 SVG 인라인 생성 (별도 이미지 파일 불필요) */ -}}
+{{- $title := .Title | plainify -}}
+{{- $cat := "" -}}
+{{- with .GetTerms "categories" -}}{{- $cat = (index . 0).Title -}}{{- end -}}
+{{- /* 카테고리별 그라디언트 팔레트 */ -}}
+{{- $palettes := dict
+    "모델" (dict "c1" "#312e81" "c2" "#4f46e5")
+    "산업" (dict "c1" "#0c4a6e" "c2" "#0284c7")
+    "정책" (dict "c1" "#064e3b" "c2" "#0f9d8f")
+    "보안" (dict "c1" "#4c0519" "c2" "#be123c")
+    "연구" (dict "c1" "#3b0764" "c2" "#7e22ce")
+-}}
+{{- $p := index $palettes $cat -}}
+{{- if not $p -}}{{- $p = index $palettes "연구" -}}{{- end -}}
+{{- /* 제목을 최대 3줄로 패킹 (줄당 16자) */ -}}
+{{- $words := split $title " " -}}
+{{- $lines := slice -}}
+{{- $cur := "" -}}
+{{- range $w := $words -}}
+    {{- $cand := $w -}}
+    {{- if ne $cur "" -}}{{- $cand = printf "%s %s" $cur $w -}}{{- end -}}
+    {{- if and (ne $cur "") (gt (strings.RuneCount $cand) 16) -}}
+        {{- $lines = $lines | append $cur -}}
+        {{- $cur = $w -}}
+    {{- else -}}
+        {{- $cur = $cand -}}
+    {{- end -}}
+{{- end -}}
+{{- if ne $cur "" -}}{{- $lines = $lines | append $cur -}}{{- end -}}
+{{- if gt (len $lines) 3 -}}
+    {{- $lines = slice (index $lines 0) (index $lines 1) (printf "%s…" (index $lines 2)) -}}
+{{- end -}}
+{{- $n := len $lines -}}
+{{- $y0 := 340 -}}
+{{- if eq $n 2 -}}{{- $y0 = 302 -}}{{- end -}}
+{{- if eq $n 3 -}}{{- $y0 = 264 -}}{{- end -}}
+{{- $date := .Date | time.Format "2006. 01. 02." -}}
+{{- $uid := substr (md5 $title) 0 6 -}}
+{{- $badge := "AI 브리핑" -}}
+{{- if ne $cat "" -}}{{- $badge = printf "AI 브리핑 · %s" $cat -}}{{- end -}}
+{{- $bw := add 52 (mul (strings.RuneCount $badge) 17) -}}
+<svg class="gen-card" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{{ $title | htmlEscape }}">
+    <defs>
+        <linearGradient id="gc{{ $uid }}" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="{{ $p.c1 }}"/>
+            <stop offset="1" stop-color="{{ $p.c2 }}"/>
+        </linearGradient>
+    </defs>
+    <rect width="1200" height="630" fill="url(#gc{{ $uid }})"/>
+    <circle cx="1070" cy="70" r="270" fill="#ffffff" opacity="0.06"/>
+    <circle cx="1160" cy="570" r="190" fill="#ffffff" opacity="0.05"/>
+    <circle cx="60" cy="620" r="150" fill="#000000" opacity="0.12"/>
+    <rect x="72" y="96" width="{{ $bw }}" height="48" rx="24" fill="#ffffff" opacity="0.16"/>
+    <text x="98" y="128" font-family="Pretendard Variable, Pretendard, 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="24" font-weight="600" fill="#ffffff">{{ $badge | htmlEscape }}</text>
+    {{- range $i, $l := $lines }}
+    <text x="72" y="{{ add $y0 (mul $i 84) }}" font-family="Pretendard Variable, Pretendard, 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="62" font-weight="700" fill="#ffffff">{{ $l | htmlEscape }}</text>
+    {{- end }}
+    <text x="72" y="562" font-family="Pretendard Variable, Pretendard, 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="26" fill="#ffffff" opacity="0.85">{{ $date }}</text>
+    <text x="1128" y="562" text-anchor="end" font-family="Pretendard Variable, Pretendard, 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="28" font-weight="700" fill="#ffffff">AI 브리핑</text>
+</svg>

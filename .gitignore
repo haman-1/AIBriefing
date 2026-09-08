@@ -1,0 +1,8 @@
+# Hugo 빌드 결과물
+public/
+resources/_gen/
+.hugo_build.lock
+
+# OS/에디터
+Thumbs.db
+.DS_Store

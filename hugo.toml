@@ -1,0 +1,133 @@
+# ── 사이트 기본 정보 ─────────────────────────────────────────────
+# ⚠️ 배포 전 아래 baseURL을 실제 주소로 변경하세요.
+#    GitHub 프로젝트 페이지: https://<GitHub사용자명>.github.io/<저장소명>/
+#    커스텀 도메인 구매 시:    https://<도메인>/
+baseURL = 'https://YOUR_GITHUB_USERNAME.github.io/aidaily/'
+locale = 'ko-kr'
+defaultContentLanguage = 'ko'
+title = 'AI 브리핑'
+theme = 'PaperMod'
+
+# ── SEO 기본 ────────────────────────────────────────────────────
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+pygmentsUseClasses = true
+
+[pagination]
+  pagerSize = 10
+
+# 시리즈(뉴스 브리핑 묶음) — 기본 category/tag는 덮어쓰기 되므로 함께 선언
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  series = 'series'
+
+# 포스트 URL을 파일명 기반으로 — 짧고 안정적이라 SEO에 유리
+# (:slug는 slug 미지정 시 한글 제목으로 폴백하므로 영문 파일명을 쓰는 :filename 사용)
+[permalinks]
+  posts = '/posts/:filename/'
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
+[minify]
+  disableXML = true
+
+[params]
+  env = 'production'
+  description = '매일의 AI 뉴스와 트렌드를 쉽고 정확하게 정리하는 AI 브리핑'
+  keywords = ['AI', '인공지능', 'AI 뉴스', '생성형 AI', 'ChatGPT', 'AI 트렌드']
+  author = 'AI 브리핑'
+  defaultTheme = 'auto'
+  DateFormat = '2006. 01. 02.'
+  # 목록/본문 표시 옵션
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+  comments = false
+  # 홈 목록에 표시할 섹션
+  mainSections = ['posts']
+  # 네이버 서치어드바이저 소유 확인 코드 (등록 후 주석 해제하고 값 입력)
+  # naverSiteVerification = 'NaverSearchAdvisor발급코드'
+  # 첫 화면 히어로 문구
+[params.homeInfoParams]
+  Title = 'AI 브리핑'
+  Content = '''
+**하루에 하나, 어제의 AI 이슈.** 쏟아지는 소식 중 실제로 의미 있는 일만 골라 5분이면 읽히는 브리핑으로 정리합니다. 모델 출시 · 산업 · 정책, AI 업계의 흐름을 놓치지 마세요.
+
+[오늘의 이슈 읽기 →](/posts/)
+
+[데일리 브리핑 시리즈](/series/데일리-브리핑/) [모델](/categories/모델/) [정책](/categories/정책/) [보안](/categories/보안/) [가이드](/tags/가이드/)
+'''
+
+# 헤더 좌측 로고
+[params.label]
+  text = 'AI 브리핑'
+  icon = '/favicon.svg'
+  iconHeight = 26
+
+[[params.socialIcons]]
+  name = 'rss'
+  url = 'index.xml'
+
+[params.assets]
+  favicon = 'favicon.svg'
+  apple_touch_icon = 'favicon.svg'
+  safari_pinned_tab = 'favicon.svg'
+  theme_color = '#101726'
+  msapplication_TileColor = '#101726'
+  disableFingerprinting = false
+
+# ── 메뉴 ────────────────────────────────────────────────────────
+[[menus.main]]
+  name = '홈'
+  url = '/'
+  weight = 1
+
+[[menus.main]]
+  name = '전체 글'
+  url = 'archives/'
+  weight = 2
+
+[[menus.main]]
+  name = '카테고리'
+  url = 'categories/'
+  weight = 3
+
+[[menus.main]]
+  name = '태그'
+  url = 'tags/'
+  weight = 4
+
+[[menus.main]]
+  name = '소개'
+  url = 'about/'
+  weight = 5
+
+[[menus.main]]
+  name = '검색'
+  url = 'search/'
+  weight = 6
+
+# ── 문법 강조 ───────────────────────────────────────────────────
+[markup.highlight]
+  style = 'dracula'
+  lineNos = false
+  codeFences = true
+  guessSyntax = true
+  noClasses = false
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+# ── 사이트맵 ────────────────────────────────────────────────────
+[sitemap]
+  changefreq = 'daily'
+  priority = 0.5
+  filename = 'sitemap.xml'
