@@ -40,12 +40,16 @@ tags: ["ChatGPT"]
    git push -u origin main
    ```
 3. **저장소 Settings → Pages → Source를 "GitHub Actions"로 변경** ← 필수!
-4. Actions 탭에서 "Deploy Hugo site to Pages" 워크플로가 초록불인지 확인
-5. `https://haman-1.github.io/AIBriefing/` 접속 확인
+4. **커스텀 도메인 연결** — 도메인 Registrar(판매사) DNS 설정에서:
+   - `devsoo.com` (A 레코드 4개): `185.199.108.153` / `185.199.109.153` / `185.199.110.153` / `185.199.111.153`
+   - `www.devsoo.com` (CNAME): `haman-1.github.io`
+   - 저장소 **Settings → Pages → Custom domain**에 `devsoo.com` 입력 → 저장
+   - 인증서 발급 후 **Enforce HTTPS** 체크
+5. Actions 탭에서 "Deploy Hugo site to Pages" 워크플로가 초록불인지 확인
+6. `https://devsoo.com/` 접속 확인
 
-> ⚠️ `hugo.toml`의 `baseURL` 플레이스홀더는 배포 워크플로가 GitHub Pages 설정에서
-> 자동으로 실제 주소로 덮어써 배포합니다. 다만 커스텀 도메인으로 전환할 때는
-> `hugo.toml`의 baseURL을 직접 변경해야 합니다.
+> 커스텀 도메인은 `static/CNAME` 파일(devsoo.com)로 유지되며, `hugo.toml`의
+> `baseURL`도 `https://devsoo.com/`으로 설정돼 있다.
 
 ## 다음 단계 로드맵
 

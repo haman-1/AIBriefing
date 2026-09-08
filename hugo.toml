@@ -1,7 +1,6 @@
 # ── 사이트 기본 정보 ─────────────────────────────────────────────
-# 배포 워크플로가 배포 시 이 주소를 자동으로 교정하므로 참고용.
-# 커스텀 도메인 전환 시에만 직접 수정 필요.
-baseURL = 'https://haman-1.github.io/AIBriefing/'
+# 커스텀 도메인(devsoo.com) 사용 — 배포 시 워크플로가 Pages 설정 기준으로 자동 교정.
+baseURL = 'https://devsoo.com/'
 locale = 'ko-kr'
 defaultContentLanguage = 'ko'
 title = 'AI 브리핑'
