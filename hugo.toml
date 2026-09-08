@@ -51,8 +51,8 @@ pygmentsUseClasses = true
   comments = false
   # 홈 목록에 표시할 섹션
   mainSections = ['posts']
-  # 네이버 서치어드바이저 소유 확인 코드 (등록 후 주석 해제하고 값 입력)
-  # naverSiteVerification = 'NaverSearchAdvisor발급코드'
+  # 네이버 서치어드바이저 소유 확인 코드
+  naverSiteVerification = 'a67e4367f62436b00a97bc8ac8b6b8cbfaf947de'
   # 첫 화면 히어로 문구
 [params.homeInfoParams]
   Title = 'AI 브리핑'
