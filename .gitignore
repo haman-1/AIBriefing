@@ -2,6 +2,7 @@
 public/
 resources/_gen/
 .hugo_build.lock
+hugo-server.log
 
 # OS/에디터
 Thumbs.db
@@ -11,3 +12,4 @@ Thumbs.db
 CLAUDE.md
 README.md
 prompts/
+design-refs/

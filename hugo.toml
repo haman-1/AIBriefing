@@ -1,5 +1,4 @@
 # ── 사이트 기본 정보 ─────────────────────────────────────────────
-# 커스텀 도메인(devsoo.com) 사용 — 배포 시 워크플로가 Pages 설정 기준으로 자동 교정.
 baseURL = 'https://devsoo.com/'
 locale = 'ko-kr'
 defaultContentLanguage = 'ko'
@@ -38,7 +37,9 @@ pygmentsUseClasses = true
   description = '매일의 AI 뉴스와 트렌드를 쉽고 정확하게 정리하는 AI 브리핑'
   keywords = ['AI', '인공지능', 'AI 뉴스', '생성형 AI', 'ChatGPT', 'AI 트렌드']
   author = 'AI 브리핑'
-  defaultTheme = 'auto'
+  defaultTheme = 'light'
+  disableThemeToggle = true
+  images = ['og-default.png']
   DateFormat = '2006. 01. 02.'
   # 목록/본문 표시 옵션
   ShowReadingTime = true
@@ -53,16 +54,6 @@ pygmentsUseClasses = true
   mainSections = ['posts']
   # 네이버 서치어드바이저 소유 확인 코드
   naverSiteVerification = 'a67e4367f62436b00a97bc8ac8b6b8cbfaf947de'
-  # 첫 화면 히어로 문구
-[params.homeInfoParams]
-  Title = 'AI 브리핑'
-  Content = '''
-**하루에 하나, 어제의 AI 이슈.** 쏟아지는 소식 중 실제로 의미 있는 일만 골라 5분이면 읽히는 브리핑으로 정리합니다. 모델 출시 · 산업 · 정책, AI 업계의 흐름을 놓치지 마세요.
-
-[오늘의 이슈 읽기 →](/posts/)
-
-[데일리 브리핑 시리즈](/series/데일리-브리핑/) [모델](/categories/모델/) [정책](/categories/정책/) [보안](/categories/보안/) [가이드](/tags/가이드/)
-'''
 
 # 헤더 좌측 로고
 [params.label]
@@ -78,8 +69,8 @@ pygmentsUseClasses = true
   favicon = 'favicon.svg'
   apple_touch_icon = 'favicon.svg'
   safari_pinned_tab = 'favicon.svg'
-  theme_color = '#101726'
-  msapplication_TileColor = '#101726'
+  theme_color = '#f9f8fe'
+  msapplication_TileColor = '#0f6cbd'
   disableFingerprinting = false
 
 # ── 메뉴 ────────────────────────────────────────────────────────

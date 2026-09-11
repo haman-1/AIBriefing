@@ -1,0 +1,117 @@
+{{- define "main" }}
+
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true" }}
+{{- $paginator := .Paginate $pages }}
+
+{{- /* 히어로 — 1페이지만 (2페이지부터는 그리드만) */ -}}
+{{- if eq $paginator.PageNumber 1 }}
+<section class="hero">
+    <div class="hero-main">
+        <h1 class="hero-title">{{ site.Title }}</h1>
+        <p class="hero-desc">하루에 하나, 어제의 AI 이슈. 쏟아지는 소식 중 실제로 의미 있는 일만 골라 5분이면 읽히는 브리핑으로 정리합니다. 모델 출시 · 산업 · 정책, AI 업계의 흐름을 놓치지 마세요.</p>
+        <div class="hero-cta">
+            <a class="btn btn-primary" href="{{ "/posts/" | relURL }}">오늘의 이슈 읽기</a>
+            <a class="btn btn-ghost" href="{{ "/series/데일리-브리핑/" | relURL }}">데일리 브리핑</a>
+        </div>
+        <div class="hero-chips">
+            {{- range first 5 site.Taxonomies.categories.ByCount }}
+            <a class="chip" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+            {{- end }}
+        </div>
+    </div>
+    <div class="hero-side">
+        <form class="hero-search" action="{{ "/search/" | relURL }}" method="get" role="search">
+            <input type="search" name="q" placeholder="궁금한 AI 이슈를 검색해보세요" aria-label="검색어" autocomplete="off">
+            <button class="btn btn-primary" type="submit">검색</button>
+        </form>
+        {{- with index $paginator.Pages 0 }}
+        <article class="post-entry featured">
+            {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" false) }}
+            <header class="entry-header">
+                <h2 class="entry-hint-parent">
+                    {{- .Title }}
+                    {{- if .Draft }}
+                    <span class="entry-hint" title="Draft">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+                            <path d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+                        </svg>
+                    </span>
+                    {{- end }}
+                </h2>
+            </header>
+            {{- if (ne (.Param "hideSummary") true) }}
+            <div class="entry-content">
+                <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+            </div>
+            {{- end }}
+            {{- if not (.Param "hideMeta") }}
+            <footer class="entry-footer">
+                {{- partial "post_meta.html" . -}}
+            </footer>
+            {{- end }}
+            <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+        </article>
+        {{- end }}
+    </div>
+</section>
+{{- end }}
+
+{{- /* 최신 글 그리드 */ -}}
+<section class="home-grid">
+    {{- range $index, $page := $paginator.Pages }}
+    {{- if and (eq $paginator.PageNumber 1) (eq $index 0) }}{{ continue }}{{ end }}
+    <article class="post-entry">
+        {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
+        {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
+        <header class="entry-header">
+            <h2 class="entry-hint-parent">
+                {{- .Title }}
+                {{- if .Draft }}
+                <span class="entry-hint" title="Draft">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+                        <path d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+                    </svg>
+                </span>
+                {{- end }}
+            </h2>
+        </header>
+        {{- if (ne (.Param "hideSummary") true) }}
+        <div class="entry-content">
+            <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+        </div>
+        {{- end }}
+        {{- if not (.Param "hideMeta") }}
+        <footer class="entry-footer">
+            {{- partial "post_meta.html" . -}}
+        </footer>
+        {{- end }}
+        <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+    </article>
+    {{- end }}
+</section>
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+    <nav class="pagination">
+        {{- if $paginator.HasPrev }}
+        <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+            «&nbsp;{{ i18n "prev_page" }}&nbsp;
+            {{- if (.Param "ShowPageNums") }}
+            {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
+            {{- end }}
+        </a>
+        {{- end }}
+        {{- if $paginator.HasNext }}
+        <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+            {{- i18n "next_page" }}&nbsp;
+            {{- if (.Param "ShowPageNums") }}
+            {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
+            {{- end }}&nbsp;»
+        </a>
+        {{- end }}
+    </nav>
+</footer>
+{{- end }}
+
+{{- end }}

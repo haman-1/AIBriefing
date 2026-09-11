@@ -1,120 +1,277 @@
 /* ============================================================
-   AI 브리핑 커스텀 스타일 — PaperMod 오버라이드
-   (Pretendard 폰트 / 색 팔레트 / 카드 목록 / 본문 디테일)
+   AI 브리핑 커스텀 스타일 — 라이트 전용 (devblogs 스펙)
+   배경 #f9f8fe · 프라이머리 #0f6cbd · 4px 그리드 · 150ms 모션
    ============================================================ */
 
-/* ── 색 팔레트 ─────────────────────────────────────────── */
+/* ── 토큰: PaperMod 변수 오버라이드 + 브랜드 ─────────────── */
 :root {
-    --radius: 14px;
-    --theme: #f4f6fa;
-    --entry: #ffffff;
-    --primary: #111827;
-    --secondary: #556074;
-    --tertiary: #d7dce6;
-    --content: #242b3a;
-    --code-bg: #eef1f7;
-    --code-block-bg: #171b26;
-    --border: #e4e8f0;
-    --accent: #2f6bff;
-    --accent-soft: rgba(47, 107, 255, 0.09);
-    --shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.06);
-    --shadow-lg: 0 14px 32px rgba(16, 24, 40, 0.13);
+    --gap: 24px;
+    --nav-width: 1552px;                 /* 1600px 컨테이너 - gap*2 */
+    --main-width: 720px;                 /* 본문 읽기 폭 유지 */
+    --radius: 8px;                       /* 카드 */
+    --theme: #f9f8fe;                    /* 페이지 캔버스 */
+    --entry: #ffffff;                    /* 카드·서피스 */
+    --primary: #242424;                  /* 본문·헤딩 텍스트 */
+    --secondary: #616161;                /* 메타 텍스트 */
+    --tertiary: #e5e5e5;
+    --content: #242424;
+    --code-block-bg: #1e1e1e;
+    --code-bg: #f5f5f5;
+    --border: rgba(0, 0, 0, 0.08);
+    color-scheme: light;
+
+    /* 브랜드 */
+    --accent: #0f6cbd;                   /* 프라이머리: CTA·링크·포커스 */
+    --accent-hover: #115ea3;
+    --accent-soft: #62abf5;              /* 세컨더리: 카테고리·상태·장식 */
+    --accent-tint: rgba(15, 108, 189, 0.08);
+    --radius-sm: 4px;                    /* 버튼·인풋 */
+    --border-strong: rgb(229, 229, 229);
+    --input-border: rgb(209, 209, 209);
+    --shadow-card: 0 4px 8px rgba(0, 0, 0, 0.08), 0 0 2px rgba(0, 0, 0, 0.06);
+    --shadow-card-hover: 0 4px 8px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+    --motion: 150ms ease;
 }
 
-:root[data-theme="dark"] {
-    --theme: #0e1118;
-    --entry: #171c27;
-    --primary: #e8ecf4;
-    --secondary: #98a3b8;
-    --tertiary: #2b3242;
-    --content: #cdd5e4;
-    --code-bg: #1c222f;
-    --code-block-bg: #11141d;
-    --border: #262d3d;
-    --accent: #6f97ff;
-    --accent-soft: rgba(111, 151, 255, 0.13);
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 14px 32px rgba(0, 0, 0, 0.5);
-}
-
-/* ── 기본 타이포그래피 (Pretendard) ─────────────────────── */
+/* ── 기본 타이포그래피 ────────────────────────────────────── */
 body {
-    font-family: 'Pretendard Variable', Pretendard, -apple-system,
-        BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR',
+    font-family: 'Segoe UI', 'Pretendard Variable', Pretendard,
+        -apple-system, BlinkMacSystemFont, 'Noto Sans KR',
         'Malgun Gothic', sans-serif;
-    letter-spacing: -0.011em;
+    color: var(--primary);
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 600;                    /* Segoe UI Semibold 대응 */
 }
 
 ::selection {
-    background: rgba(47, 107, 255, 0.25);
+    background: rgba(15, 108, 189, 0.25);
 }
 
-/* 목록 페이지 배경 — 회색 대신 테마 배경색으로 통일 */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* 목록 페이지 배경 — 회색(code-bg) 대신 테마 배경으로 통일 */
 .list {
     background: var(--theme);
 }
 
-/* ── 홈 히어로 ────────────────────────────────────────── */
-.home-info {
-    padding: calc(var(--gap) * 1.6) calc(var(--gap) * 1.75);
+/* 목록·홈 컨테이너 확장 (본문만 좁게 유지) */
+.list .main {
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+}
+
+/* ── 헤더: sticky + 보더 (토글 버튼은 hugo.toml에서 제거됨) ── */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--theme);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.logo a {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.logo a img,
+.logo a svg {
+    border-radius: var(--radius-sm);
+}
+
+.menu a {
+    font-size: 14px;
+    color: var(--primary);
+}
+
+.menu a:hover {
+    color: var(--accent);
+}
+
+.menu .active {
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+    text-decoration-thickness: 2px;
+}
+
+/* ── 버튼 ─────────────────────────────────────────────────── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background var(--motion), border-color var(--motion),
+        color var(--motion);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    color: #ffffff;
+}
+
+.btn-ghost {
     background: var(--entry);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-sm);
-    margin-bottom: calc(var(--gap) * 1.25);
+    border-color: var(--input-border);
+    color: var(--primary);
 }
 
-.home-info .entry-header h1 {
-    font-size: clamp(30px, 6vw, 44px);
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    line-height: 1.2;
+.btn-ghost:hover {
+    background: #0c3b5e;
+    border-color: #0c3b5e;
+    color: #ffffff;
 }
 
-.home-info .entry-content {
-    margin-top: 14px;
-    font-size: 17px;
+/* ── 홈 히어로 (layouts/index.html) ───────────────────────── */
+.hero {
+    display: grid;
+    grid-template-columns: 62fr 38fr;
+    gap: 40px;
+    align-items: start;
+    padding: 80px 0 40px;
+}
+
+.hero-title {
+    font-size: 40px;
+    line-height: 1.3;
+    margin: 0 0 12px;
+}
+
+.hero-desc {
+    margin: 0 0 24px;
+    font-size: 16px;
     line-height: 1.75;
     color: var(--secondary);
-    -webkit-line-clamp: unset;
+    max-width: 60ch;
 }
 
-/* 히어로 안의 링크 = 버튼 스타일 */
-.home-info .entry-content p a {
+.hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
     display: inline-block;
-    margin-top: 10px;
-    padding: 10px 22px;
-    background: var(--accent);
-    color: #fff;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 15.5px;
+    padding: 4px 12px;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--primary);
     text-decoration: none;
-    box-shadow: 0 4px 14px rgba(47, 107, 255, 0.35);
-    transition: filter 0.15s ease, transform 0.15s ease;
+    transition: color var(--motion), border-color var(--motion);
 }
 
-.home-info .entry-content p a:hover {
-    filter: brightness(1.08);
-    transform: translateY(-1px);
+.chip:hover {
+    color: var(--accent);
+    border-color: var(--accent-soft);
 }
 
-/* ── 글 목록 카드 ─────────────────────────────────────── */
+/* 히어로 검색폼 */
+.hero-search {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.hero-search input {
+    flex: 1;
+    min-width: 0;
+    height: 32px;
+    padding: 4px 10px;
+    background: var(--entry);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: var(--primary);
+}
+
+.hero-search input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-color: transparent;
+}
+
+/* ── 홈 그리드 + 피처드 카드 ──────────────────────────────── */
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 40px;
+    padding-bottom: 56px;
+}
+
+.home-grid .post-entry {
+    margin-bottom: 0;
+}
+
+.post-entry.featured {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-entry.featured .entry-header h2 {
+    font-size: 20px;
+}
+
+/* ── 글 목록 카드 ─────────────────────────────────────────── */
 .post-entry {
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-card);
     overflow: hidden;
+    transition: box-shadow var(--motion), border-color var(--motion);
 }
 
 .post-entry:hover,
 .post-entry:focus-within {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--tertiary);
+    transform: none;
+    box-shadow: var(--shadow-card-hover);
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+.post-entry:focus-within {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
 }
 
 .post-entry .entry-header h2 {
-    font-weight: 750;
-    letter-spacing: -0.02em;
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.post-entry:hover .entry-header h2 {
+    color: var(--accent);
 }
 
 /* 자동 생성 커버를 카드 상단에 빈틈없이 붙이기 */
@@ -130,7 +287,22 @@ body {
     border-radius: 0;
 }
 
-/* ── 본문(single) 상단 커버 ───────────────────────────── */
+/* ── 페이지네이션 ─────────────────────────────────────────── */
+.pagination a {
+    background: var(--accent);
+    border-radius: var(--radius-sm);
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 36px;
+    padding: 0 16px;
+    transition: background var(--motion);
+}
+
+.pagination a:hover {
+    background: var(--accent-hover);
+}
+
+/* ── 본문(single) ────────────────────────────────────────── */
 .post-single .entry-cover {
     margin: 0 0 calc(var(--gap) * 1.25);
 }
@@ -144,27 +316,31 @@ body {
 }
 
 .post-title {
-    font-weight: 800;
-    letter-spacing: -0.025em;
+    font-weight: 600;
 }
 
-/* ── 본문 콘텐츠 디테일 ───────────────────────────────── */
 .post-content {
-    line-height: 1.8;
+    font-size: 16px;                    /* 한국어 가독성 예외 (UI는 14px) */
+    line-height: 1.75;
 }
 
 .post-content h1,
 .post-content h2,
 .post-content h3,
 .post-content h4 {
-    letter-spacing: -0.02em;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .post-content h2 {
     margin-top: 2.2em;
     padding-bottom: 0.35em;
     border-bottom: 1px solid var(--border);
+    font-size: 24px;
+}
+
+.post-content h3 {
+    margin-top: 1.8em;
+    font-size: 20px;
 }
 
 .post-content a {
@@ -175,6 +351,7 @@ body {
 }
 
 .post-content a:hover {
+    color: var(--accent-hover);
     text-decoration-thickness: 2px;
 }
 
@@ -182,8 +359,8 @@ body {
     margin: 1.5em 0;
     padding: 14px 20px;
     border-left: 3px solid var(--accent);
-    border-radius: 0 12px 12px 0;
-    background: var(--accent-soft);
+    border-radius: var(--radius-sm);
+    background: var(--accent-tint);
     color: var(--secondary);
     font-style: normal;
 }
@@ -206,20 +383,20 @@ body {
 
 .post-content th {
     background: var(--code-bg);
-    font-weight: 700;
+    font-weight: 600;
     white-space: nowrap;
 }
 
 .post-content code {
     padding: 0.15em 0.4em;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     background: var(--code-bg);
     font-size: 0.88em;
 }
 
 .post-content pre {
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--radius);
 }
 
 .post-content hr {
@@ -233,44 +410,138 @@ body {
     margin: 0.35em 0;
 }
 
-/* ── 태그 칩 ──────────────────────────────────────────── */
+/* ── 태그 칩 ──────────────────────────────────────────────── */
 .post-tags a,
 .post-tags li a {
     display: inline-block;
-    padding: 4px 13px;
-    background: var(--code-bg);
+    padding: 4px 12px;
+    background: var(--entry);
     border: 1px solid var(--border);
-    border-radius: 999px;
+    border-radius: var(--radius-sm);
     color: var(--secondary);
     font-size: 13px;
     font-weight: 500;
     text-decoration: none;
-    transition: color 0.15s ease, border-color 0.15s ease;
+    transition: color var(--motion), border-color var(--motion);
 }
 
 .post-tags a:hover,
 .post-tags li a:hover {
     color: var(--accent);
-    border-color: var(--accent);
+    border-color: var(--accent-soft);
 }
 
-/* ── 목차(TOC) 패널 ──────────────────────────────────── */
+/* ── 목차(TOC) 패널 ──────────────────────────────────────── */
 .toc {
     background: var(--entry);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--radius);
     padding: 8px 0;
 }
 
-/* ── 헤더 로고 ────────────────────────────────────────── */
-.logo a {
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    font-size: 19px;
+/* ── 푸터 ─────────────────────────────────────────────────── */
+.footer {
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+    margin: auto;
+    padding: 0;
+    border-top: 1px solid var(--border-strong);
+    color: var(--secondary);
+    font-size: 13px;
+    line-height: 24px;
 }
 
-.logo img {
-    border-radius: 7px;
-    margin-right: 2px;
-    vertical-align: -7px;
+.footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 24px var(--gap);
+}
+
+.footer-title a {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.footer-desc {
+    display: block;
+    font-size: 13px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer-links a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.footer-bottom {
+    padding: 12px var(--gap) 24px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.footer a {
+    color: inherit;
+}
+
+.footer a:hover {
+    color: var(--accent);
+}
+
+/* top-link 버튼 */
+.top-link {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    border-radius: var(--radius-sm);
+    transition: visibility 0.3s, opacity 0.3s, color var(--motion),
+        border-color var(--motion);
+}
+
+.top-link:hover {
+    color: var(--accent);
+    border-color: var(--accent-soft);
+}
+
+/* ── 반응형 ───────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 40px 0 24px;
+    }
+
+    .hero-title {
+        font-size: 32px;
+    }
+
+    .home-grid {
+        gap: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-search {
+        flex-direction: column;
+    }
+
+    .hero-search .btn {
+        width: 100%;
+    }
 }
