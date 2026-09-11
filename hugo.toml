@@ -65,6 +65,10 @@ pygmentsUseClasses = true
   name = 'rss'
   url = 'index.xml'
 
+# ── 구글 애널리틱스 (GA4) ───────────────────────────────────────
+[services.googleAnalytics]
+  ID = 'G-MG42F879FV'
+
 [params.assets]
   favicon = 'favicon.svg'
   apple_touch_icon = 'favicon.svg'

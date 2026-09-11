@@ -1,0 +1,13 @@
+{{- /* 구글 애널리틱스 GA4 — hugo.toml [services.googleAnalytics] ID로 렌더
+     (테마 head.html이 프로덕션에서 이 파셜을 호출) */ -}}
+{{- with site.Config.Services.GoogleAnalytics.ID }}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ . }}');
+</script>
+{{- end }}
