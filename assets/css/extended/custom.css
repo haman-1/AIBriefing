@@ -624,6 +624,11 @@ input:focus-visible,
         padding: 40px 0 24px;
     }
 
+    /* 최근 업데이트 패널은 데스크톱 전용 — 모바일에선 그리드가 같은 글을 보여줌 */
+    .hero-recent {
+        display: none;
+    }
+
     .hero-title {
         font-size: 32px;
     }
