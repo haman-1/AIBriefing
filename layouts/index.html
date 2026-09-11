@@ -19,6 +19,26 @@
             <a class="chip" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
             {{- end }}
         </div>
+        {{- /* 좌측 하단 여백 채움 — 통계 + 최근 업데이트 목록 */ -}}
+        {{- $guides := where $pages "Params.tags" "intersect" (slice "가이드") }}
+        <div class="hero-recent">
+            <div class="hero-recent-head">
+                <h2 class="hero-recent-title">최근 업데이트</h2>
+                <span class="hero-recent-stats">브리핑 {{ sub (len $pages) (len $guides) }}편 · 가이드 {{ len $guides }}편</span>
+            </div>
+            <ul class="hero-recent-list">
+                {{- range first 3 (after 1 $pages) }}
+                <li>
+                    <a href="{{ .Permalink }}">
+                        <span class="hero-recent-date">{{ .Date.Format "1.2" }}</span>
+                        <span class="hero-recent-name">{{ .Title }}</span>
+                        <span class="hero-recent-arrow" aria-hidden="true">→</span>
+                    </a>
+                </li>
+                {{- end }}
+            </ul>
+            <a class="hero-recent-more" href="{{ "/posts/" | relURL }}">전체 글 보기 →</a>
+        </div>
     </div>
     <div class="hero-side">
         <form class="hero-search" action="{{ "/search/" | relURL }}" method="get" role="search">

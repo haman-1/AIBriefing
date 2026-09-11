@@ -200,6 +200,107 @@ input:focus-visible,
     border-color: var(--accent-soft);
 }
 
+/* 히어로 좌측 하단 — 최근 업데이트 패널 */
+.hero-recent {
+    margin-top: 28px;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 20px 12px;
+}
+
+.hero-recent-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.hero-recent-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.hero-recent-stats {
+    font-size: 13px;
+    color: var(--secondary);
+}
+
+.hero-recent-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-recent-list li {
+    margin: 0;
+}
+
+.hero-recent-list a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    color: inherit;
+    text-decoration: none;
+}
+
+.hero-recent-list li:last-child a {
+    border-bottom: none;
+}
+
+.hero-recent-date {
+    flex: none;
+    min-width: 40px;
+    font-size: 13px;
+    color: var(--secondary);
+    font-variant-numeric: tabular-nums;
+}
+
+.hero-recent-name {
+    flex: 1;
+    min-width: 0;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color var(--motion);
+}
+
+.hero-recent-arrow {
+    flex: none;
+    color: var(--accent);
+    transition: transform var(--motion);
+}
+
+.hero-recent-list a:hover .hero-recent-name {
+    color: var(--accent);
+}
+
+.hero-recent-list a:hover .hero-recent-arrow {
+    transform: translateX(4px);
+}
+
+.hero-recent-more {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.hero-recent-more:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 /* 히어로 검색폼 */
 .hero-search {
     display: flex;
