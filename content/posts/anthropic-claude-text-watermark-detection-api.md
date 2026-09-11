@@ -7,6 +7,10 @@ summary: Anthropic이 8월 2일부터 클로드가 생성한 모든 텍스트에
 categories: ['보안']
 tags: ['Anthropic', 'EU AI Act', 'AI 투명성']
 series: ['데일리 브리핑']
+cover:
+  image: covers/watermark.jpg
+  alt: AI 텍스트 워터마킹 커버 이미지
+images: ['covers/watermark.jpg']
 ---
 
 ## 3줄 요약

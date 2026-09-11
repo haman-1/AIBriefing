@@ -7,6 +7,10 @@ summary: 2027년 정부 예산안에서 AI 예산이 9조4000억 원으로 84.3%
 categories: ['정책']
 tags: ['AI 예산', '과기정통부', '피지컬 AI']
 series: ['데일리 브리핑']
+cover:
+  image: covers/korea-budget.jpg
+  alt: 2027 AI 예산 커버 이미지
+images: ['covers/korea-budget.jpg']
 ---
 
 ## 3줄 요약

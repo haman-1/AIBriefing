@@ -6,6 +6,10 @@ description: Gemini 3.8 Flash 가격 총정리. API 도입가는 100만 토큰�
 summary: Gemini 3.8 Flash는 9월 2일 출시된 구글의 코딩·에이전트 특화 모델이다. API 도입가 $0.75/$3.75는 연말까지만 유효하고 2027년부터 2배로 오르며, Gemini 앱은 AI Pro·Ultra 구독자에게만 제공된다. 가격표와 사용법을 표로 정리한다.
 categories: ['모델']
 tags: ['Gemini', 'Google', '가이드']
+cover:
+  image: covers/gemini-guide.jpg
+  alt: Gemini 3.8 Flash 가이드 커버 이미지
+images: ['covers/gemini-guide.jpg']
 ---
 
 > **2026년 9월 8일 기준** — 도입가 종료일과 배포 상황은 변동될 수 있어 변경 확인 시 이 글을 업데이트합니다.

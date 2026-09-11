@@ -7,6 +7,10 @@ summary: 삼성전자가 미스트랄 AI의 30억 유로 시리즈D를 주도했
 categories: ['산업']
 tags: ['삼성전자', '미스트랄 AI', '투자']
 series: ['데일리 브리핑']
+cover:
+  image: covers/samsung-mistral.jpg
+  alt: 삼성-미스트랄 투자 커버 이미지
+images: ['covers/samsung-mistral.jpg']
 ---
 
 ## 3줄 요약

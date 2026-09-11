@@ -6,6 +6,10 @@ description: GPT-6 Astra 가격 총정리. API는 100만 토큰당 입력 $10·�
 summary: GPT-6 Astra는 지금 Pro·Enterprise·Business에 먼저 풀리고 Plus는 며칠 내 확대 중이다. API 가격은 100만 토큰당 $10/$50로 이전 모델의 절반 수준. 플랜별 요금과 아스트라 프로 차이를 표로 정리한다.
 categories: ['모델']
 tags: ['GPT-6', 'OpenAI', '가이드']
+cover:
+  image: covers/astra.jpg
+  alt: GPT-6 아스트라 가이드 커버 이미지
+images: ['covers/astra.jpg']
 ---
 
 > **2026년 9월 8일 기준** — 배포 상황과 가격은 변동될 수 있어 변경 확인 시 이 글을 업데이트합니다.

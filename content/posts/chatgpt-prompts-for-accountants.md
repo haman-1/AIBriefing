@@ -6,6 +6,10 @@ description: 회계사를 위한 ChatGPT 프롬프트 10개 총정리. 계정과
 summary: 회계 업무에 바로 쓸 수 있는 ChatGPT 프롬프트 10개를 복붙 형태로 정리했다. 전표 분류·분개·증빙 체크부터 마감 체크리스트, 예산-실적 분석, 감사 대응, 고객 안내메일까지. 쓰기 전 지켜야 3대 원칙도 함께 정리한다.
 categories: ['산업']
 tags: ['ChatGPT', '회계', '가이드']
+cover:
+  image: covers/accountant.jpg
+  alt: 회계사 ChatGPT 프롬프트 가이드 커버 이미지
+images: ['covers/accountant.jpg']
 ---
 
 > **2026년 9월 8일 기준** — 프롬프트는 시작점이다. 기관마다 계정과목 체계·업무 관행이 다르므로 대괄호 `[ ]` 부분을 자기 상황으로 채우고, 출력은 반드시 검증해서 쓴다.

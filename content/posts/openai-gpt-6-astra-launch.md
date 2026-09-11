@@ -7,6 +7,10 @@ summary: OpenAI가 9월 3일 공개한 GPT-6 Astra는 컴퓨터 사용·코딩·
 categories: ['모델']
 tags: ['OpenAI', 'GPT-6', 'AI 에이전트']
 series: ['데일리 브리핑']
+cover:
+  image: covers/astra-launch.jpg
+  alt: GPT-6 아스트라 발표 커버 이미지
+images: ['covers/astra-launch.jpg']
 ---
 
 ## 3줄 요약

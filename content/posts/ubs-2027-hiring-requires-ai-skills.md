@@ -7,6 +7,10 @@ summary: UBS가 2027년 글로벌 뱅킹·마켓츠 신입·인턴 지원자에 
 categories: ['산업']
 tags: ['UBS', 'AI 채용', 'AI 활용 능력']
 series: ['데일리 브리핑']
+cover:
+  image: covers/ubs-hiring.jpg
+  alt: UBS AI 채용 커버 이미지
+images: ['covers/ubs-hiring.jpg']
 ---
 
 ## 3줄 요약

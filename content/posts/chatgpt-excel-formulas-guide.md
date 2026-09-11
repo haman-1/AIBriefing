@@ -6,6 +6,10 @@ description: ChatGPT로 엑셀 수식을 만드는 프롬프트 패턴을 정리
 summary: ChatGPT로 엑셀 수식을 만들 때 정확도를 높이는 프롬프트 3요소와 상황별 프롬프트 5개를 정리했다. 수식 오류 수정, 남이 만든 수식 해석, VLOOKUP 최신화까지. 엑셀 내장 =COPILOT 함수가 9월 14일 폐지되는 이유와 대안도 함께.
 categories: ['산업']
 tags: ['ChatGPT', '엑셀', '가이드']
+cover:
+  image: covers/excel-formulas.jpg
+  alt: ChatGPT 엑셀 수식 가이드 커버 이미지
+images: ['covers/excel-formulas.jpg']
 ---
 
 > **2026년 9월 8일 기준** — 프롬프트의 `[ ]` 부분은 자기 시트 구조에 맞게 바꿔 넣는다. 받은 수식은 본 시트에 넣기 전에 임시 시트에서 먼저 확인한다.
