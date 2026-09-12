@@ -343,6 +343,13 @@ input:focus-visible,
     flex-direction: column;
 }
 
+.home-more {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 4px 0 56px;
+}
+
 .post-entry.featured .entry-header h2 {
     font-size: 20px;
 }

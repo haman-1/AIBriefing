@@ -2,7 +2,8 @@
 
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true" }}
-{{- $paginator := .Paginate $pages }}
+{{- /* 홈만 페이지당 9개 — 피처드 1 + 그리드 8 = 4열 2줄 정확히 */ -}}
+{{- $paginator := .Paginate $pages 9 }}
 
 {{- /* 히어로 — 1페이지만 (2페이지부터는 그리드만) */ -}}
 {{- if eq $paginator.PageNumber 1 }}
@@ -112,25 +113,13 @@
 </section>
 
 {{- if gt $paginator.TotalPages 1 }}
-<footer class="page-footer">
-    <nav class="pagination">
-        {{- if $paginator.HasPrev }}
-        <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
-            «&nbsp;{{ i18n "prev_page" }}&nbsp;
-            {{- if (.Param "ShowPageNums") }}
-            {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
-            {{- end }}
-        </a>
-        {{- end }}
-        {{- if $paginator.HasNext }}
-        <a class="next" href="{{ $paginator.Next.URL | absURL }}">
-            {{- i18n "next_page" }}&nbsp;
-            {{- if (.Param "ShowPageNums") }}
-            {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
-            {{- end }}&nbsp;»
-        </a>
-        {{- end }}
-    </nav>
+<footer class="home-more">
+    {{- if $paginator.HasPrev }}
+    <a class="btn btn-ghost" href="{{ $paginator.Prev.URL | relURL }}">← 이전 글</a>
+    {{- end }}
+    {{- if $paginator.HasNext }}
+    <a class="btn btn-primary" href="{{ $paginator.Next.URL | relURL }}">글 더 보기 →</a>
+    {{- end }}
 </footer>
 {{- end }}
 
