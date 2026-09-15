@@ -5,6 +5,10 @@ description: "AI 부업의 실제 수익 구조를 데이터로 정리한다. �
 summary: "업워크 데이터로 확인된 AI 부업 수요 급증 분야와 포화 분야, 현실적인 시작 순서와 사기 판별 기준을 정리했다."
 categories: ["산업"]
 tags: ["AI 부업", "수익화", "가이드"]
+cover:
+  image: covers/ai-side-income.jpg
+  alt: "밤에 집 책상에서 노트북으로 AI 사이드 프로젝트를 하며 스마트폰으로 수익 그래프를 확인하는 모습"
+images: ['covers/ai-side-income.jpg']
 draft: false
 ---
 
