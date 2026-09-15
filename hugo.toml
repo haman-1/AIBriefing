@@ -2,6 +2,7 @@
 baseURL = 'https://devsoo.com/'
 locale = 'ko-kr'
 defaultContentLanguage = 'ko'
+timeZone = 'Asia/Seoul'
 title = 'AI 브리핑'
 theme = 'PaperMod'
 
