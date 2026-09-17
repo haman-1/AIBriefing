@@ -1,4 +1,4 @@
-# 커버 이미지 생성 — Gemini API (gemini-3.1-flash-image)
+﻿# 커버 이미지 생성 — Gemini API (gemini-3.1-flash-image)
 # 사용법: .\scripts\gen_cover.ps1 -OutPath "static\covers\<파일명>.jpg" -Prompt "장면 설명"
 # 키: F:\GlmWork\gemini-api-key.txt (저장소 밖 — 절대 커밋 금지)
 # 생성 후 자동 후처리: 가로 1200px 리사이즈 + JPEG 품질 82 (목표 200KB 이하)
