@@ -8,7 +8,7 @@ categories: ['산업']
 tags: ['AI 자소서', '취업', '가이드']
 cover:
   image: covers/ai-cover-letter-resume-guide.jpg
-  alt: 노트북으로 자소서를 첨삭하며 수정하는 취업 준비생의 책상 — AI 자소서 첨삭 가이드 커버
+  alt: 면접장 앞 벤치에 놓인 서류 팔로우와 이력서 — AI 자소서 첨삭 가이드 커버
 images: ['covers/ai-cover-letter-resume-guide.jpg']
 ---
 

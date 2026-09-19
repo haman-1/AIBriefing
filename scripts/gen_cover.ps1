@@ -7,6 +7,11 @@ param(
     [Parameter(Mandatory = $true)][string]$Prompt
 )
 
+# --- 상투 구도 가드: "노트북 앞 사람" 장면 남발 방지 (경고만, 강제 X) ---
+if ($Prompt -match '노트북|랩탑|laptop' -and $Prompt -match '사람|남자|여자|직장인|사용자|person') {
+    Write-Warning "상투 구도 감지: '노트북 앞 사람' 장면이 이미 여러 커버에 사용됨 — 클로즈업·사물·배경 중심 등 다른 구도를 고려하세요."
+}
+
 # --- 실사(포토리얼) 가드: 평면 일러스트 계열 키워드 차단 ---
 $forbidden = @('일러스트', '플랫', '평면', '2D', '2d', '드로잉', '만화', '카툰', 'cartoon', 'flat', 'illustration', 'vector', '아이콘', '라인아트')
 $hit = $forbidden | Where-Object { $Prompt -match [regex]::Escape($_) }

@@ -8,7 +8,7 @@ categories: ['산업']
 tags: ['퍼플렉시티', 'Perplexity', '가이드']
 cover:
   image: covers/perplexity-pro-guide.jpg
-  alt: 노트북으로 AI 검색 결과를 확인하는 밝은 책상 — 퍼플렉시티 프로 가격·사용법 가이드 커버
+  alt: 서가 사이 통로 끝에 빛나는 램프가 있는 도서관 풍경 — 퍼플렉시티 프로 가격·사용법 가이드 커버
 images: ['covers/perplexity-pro-guide.jpg']
 ---
 

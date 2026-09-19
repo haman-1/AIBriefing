@@ -8,7 +8,7 @@ categories: ['산업']
 tags: ['노션 AI', 'Notion', '가이드']
 cover:
   image: covers/notion-ai-guide.jpg
-  alt: 노트북으로 노션 워크스페이스를 정리하는 밝은 오피스 책상 — 노션 AI 가격·사용법 가이드 커버
+  alt: 아침 햇살이 내려앉은 책상 위 다이어리와 스타일러스 편 정물 — 노션 AI 가격·사용법 가이드 커버
 images: ['covers/notion-ai-guide.jpg']
 ---
 
