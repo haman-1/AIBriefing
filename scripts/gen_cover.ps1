@@ -1,6 +1,6 @@
 ﻿# 커버 이미지 생성 — Gemini API (gemini-3.1-flash-image)
 # 사용법: .\scripts\gen_cover.ps1 -OutPath "static\covers\<파일명>.jpg" -Prompt "장면 설명"
-# 키: F:\GlmWork\gemini-api-key.txt (저장소 밖 — 절대 커밋 금지)
+# 키: F:\SecretsKey\gemini-api-key.txt (저장소 밖, 두 사이트 공용 — 절대 커밋 금지)
 # 생성 후 자동 후처리: 가로 1200px 리사이즈 + JPEG 품질 82 (목표 200KB 이하)
 param(
     [Parameter(Mandatory = $true)][string]$OutPath,
@@ -20,7 +20,7 @@ if ($hit -and $Prompt -notmatch '3D\s*렌더|3d render') {
     exit 1
 }
 
-$key = (Get-Content "F:\GlmWork\gemini-api-key.txt" -Raw).Trim()
+$key = (Get-Content "F:\SecretsKey\gemini-api-key.txt" -Raw).Trim()
 $model = "gemini-3.1-flash-image"  # 장당 $0.067 — 화질 필요 시 pro
 
 $style = @"
