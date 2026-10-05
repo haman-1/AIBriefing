@@ -1,7 +1,6 @@
-﻿# 커버 이미지 생성 — Black Forest Labs FLUX 3 Image API (BFL 공식 — 2026-10-06 Gemini에서 전환)
+﻿# 커버 이미지 생성 — Gemini API (gemini-3.1-flash-image)
 # 사용법: .\scripts\gen_cover.ps1 -OutPath "static\covers\<파일명>.jpg" -Prompt "장면 설명"
-# 키: F:\SecretsKey\flux3-api-key.txt (저장소 밖, 두 사이트 공용 — 절대 커밋 금지)
-# Gemini 버전 백업: gen_cover.gemini.bak.ps1
+# 키: F:\SecretsKey\gemini-api-key.txt (저장소 밖, 두 사이트 공용 — 절대 커밋 금지)
 # 생성 후 자동 후처리: 가로 1200px 리사이즈 + JPEG 품질 82 (목표 200KB 이하)
 param(
     [Parameter(Mandatory = $true)][string]$OutPath,
@@ -21,8 +20,8 @@ if ($hit -and $Prompt -notmatch '3D\s*렌더|3d render') {
     exit 1
 }
 
-$key = (Get-Content "F:\SecretsKey\flux3-api-key.txt" -Raw).Trim()
-if (-not $key) { Write-Error "키 파일 F:\SecretsKey\flux3-api-key.txt 가 비어 있습니다."; exit 1 }
+$key = (Get-Content "F:\SecretsKey\gemini-api-key.txt" -Raw).Trim()
+$model = "gemini-3.1-flash-image"  # 장당 $0.067 — 화질 필요 시 pro
 
 $style = @"
 $Prompt
@@ -30,53 +29,28 @@ $Prompt
 가로 16:9 비율 커버 이미지. 글자·텍스트·워터마크는 넣지 않는다.
 "@
 
-# FLUX 3 Image는 비동기 API — 제출 후 polling_url을 폴링해 Ready가 되면 result.sample을 내려받는다
 $body = @{
-    prompt        = $style
-    aspect_ratio  = "16:9"
-    resolution    = "1k"   # 장당 $0.048 — 768sq $0.041, 고화질 필요 시 1.5k/2k
-} | ConvertTo-Json
+    contents = @(@{ parts = @(@{ text = $style }) })
+    generationConfig = @{ responseModalities = @("IMAGE") }
+} | ConvertTo-Json -Depth 5
 
-$submit = Invoke-RestMethod -Method Post -Uri "https://api.bfl.ai/v1/flux-3-image" `
-    -Headers @{ "x-key" = $key } -ContentType "application/json; charset=utf-8" -Body ([Text.Encoding]::UTF8.GetBytes($body))
-if (-not $submit.polling_url) { Write-Error "폴링 URL 없음: $($submit | ConvertTo-Json -Depth 3)"; exit 1 }
-Write-Output "제출 완료 (id: $($submit.id)) — 생성 대기 중..."
+$resp = Invoke-RestMethod -Method Post -Uri "https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent" `
+    -Headers @{ "x-goog-api-key" = $key } -ContentType "application/json; charset=utf-8" -Body ([System.Text.Encoding]::UTF8.GetBytes($body))
 
-$deadline = (Get-Date).AddMinutes(10)
-$result = $null
-# polling_url은 절대 URL로 오는 경우가 있다 — 상대 경로면 도메인을 붙인다
-$pollUrl = if ($submit.polling_url -match "^https?://") { $submit.polling_url } else { "https://api.bfl.ai$($submit.polling_url)" }
-while ($true) {
-    if ((Get-Date) -ge $deadline) { Write-Error "10분 안에 생성이 끝나지 않았습니다 (마지막 status: $($result.status))"; exit 1 }
-    try {
-        $result = Invoke-RestMethod -Uri $pollUrl -Headers @{ "x-key" = $key } -TimeoutSec 60
-    } catch {
-        # 실패 태스크는 HTTP 503으로도 온다 — body의 status를 먼저 본다
-        if ($_.ErrorDetails.Message) { $result = $_.ErrorDetails.Message | ConvertFrom-Json } else { throw }
-    }
-    if ($result.status -eq "Ready") { break }
-    if ($result.status -notin @("Pending", "Reasoning", "Generating")) {
-        Write-Error "생성 실패 (status: $($result.status)): $($result | ConvertTo-Json -Depth 3)"; exit 1
-    }
-    Start-Sleep -Seconds 3
-}
-if (-not $result.result.sample) { Write-Error "이미지 URL 없음: $($result | ConvertTo-Json -Depth 3)"; exit 1 }
+$img = $resp.candidates[0].content.parts | Where-Object { $_.inlineData } | Select-Object -First 1
+if (-not $img) { Write-Error "이미지 응답 없음: $($resp | ConvertTo-Json -Depth 3)"; exit 1 }
 
-# 서명 URL은 1시간 후 만료 — x-key 없이 즉시 다운로드
 $full = if ([IO.Path]::IsPathRooted($OutPath)) { $OutPath } else { Join-Path (Split-Path $PSScriptRoot -Parent) $OutPath }
-Invoke-WebRequest -Uri $result.result.sample -OutFile $full -TimeoutSec 240
+[IO.File]::WriteAllBytes($full, [Convert]::FromBase64String($img.inlineData.data))
 
 # --- 후처리: 가로 1200px 리사이즈 + 품질 82 재인코딩 (용량 절감) ---
 Add-Type -AssemblyName System.Drawing
 $maxW = 1200
 $src = [System.Drawing.Image]::FromFile($full)
 try {
-    # png로 와도 jpg(품질 82)로 통일해 재인코딩한다
-    $isPng = $src.RawFormat.Guid -eq [System.Drawing.Imaging.ImageFormat]::Png.Guid
-    if ($src.Width -gt $maxW -or $isPng) {
-        $w = [Math]::Min($src.Width, $maxW)
-        $newH = [int]($src.Height * $w / $src.Width)
-        $bmp = New-Object System.Drawing.Bitmap($w, $newH)
+    if ($src.Width -gt $maxW) {
+        $newH = [int]($src.Height * $maxW / $src.Width)
+        $bmp = New-Object System.Drawing.Bitmap($maxW, $newH)
         $g = [System.Drawing.Graphics]::FromImage($bmp)
         $g.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
         $g.DrawImage($src, 0, 0, $maxW, $newH)
