@@ -2,8 +2,9 @@
 
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true" }}
-{{- /* 홈만 페이지당 9개 — 피처드 1 + 그리드 8 = 4열 2줄 정확히 */ -}}
-{{- $paginator := .Paginate $pages 9 }}
+{{- /* 피처드(최신글)는 페이지네이션 밖 — 모든 페이지 그리드 8개 = 4열 2줄 정확히 */ -}}
+{{- $featured := index $pages 0 }}
+{{- $paginator := .Paginate (after 1 $pages) 8 }}
 
 {{- /* 히어로 — 1페이지만 (2페이지부터는 그리드만) */ -}}
 {{- if eq $paginator.PageNumber 1 }}
@@ -46,7 +47,7 @@
             <input type="search" name="q" placeholder="궁금한 AI 이슈를 검색해보세요" aria-label="검색어" autocomplete="off">
             <button class="btn btn-primary" type="submit">검색</button>
         </form>
-        {{- with index $paginator.Pages 0 }}
+        {{- with $featured }}
         <article class="post-entry featured">
             {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" false) }}
             <header class="entry-header">
@@ -80,8 +81,7 @@
 
 {{- /* 최신 글 그리드 */ -}}
 <section class="home-grid">
-    {{- range $index, $page := $paginator.Pages }}
-    {{- if and (eq $paginator.PageNumber 1) (eq $index 0) }}{{ continue }}{{ end }}
+    {{- range $paginator.Pages }}
     <article class="post-entry">
         {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
         {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
