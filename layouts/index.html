@@ -118,10 +118,10 @@
 {{- if gt $paginator.TotalPages 1 }}
 <footer class="home-more">
     {{- if $paginator.HasPrev }}
-    <a class="btn btn-ghost" href="{{ $paginator.Prev.URL | relURL }}">← 이전 글</a>
+    <a class="btn btn-ghost" href="{{ $paginator.Prev.URL | relURL }}">← Previous</a>
     {{- end }}
     {{- if $paginator.HasNext }}
-    <a class="btn btn-primary" href="{{ $paginator.Next.URL | relURL }}">글 더 보기 →</a>
+    <a class="btn btn-primary" href="{{ $paginator.Next.URL | relURL }}">Next →</a>
     {{- end }}
 </footer>
 {{- end }}
