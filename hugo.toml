@@ -35,8 +35,8 @@ pygmentsUseClasses = true
 
 [params]
   env = 'production'
-  description = '매일의 AI 뉴스와 트렌드를 쉽고 정확하게 정리하는 AI 브리핑'
-  keywords = ['AI', '인공지능', 'AI 뉴스', '생성형 AI', 'ChatGPT', 'AI 트렌드']
+  description = 'AI 도구 사용법과 요금·무료 한도를 비교해 한 편으로 정리하는 AI 브리핑'
+  keywords = ['AI', '인공지능', 'AI 사용법', 'AI 도구 비교', '생성형 AI', 'ChatGPT']
   author = 'AI 브리핑'
   defaultTheme = 'light'
   disableThemeToggle = true

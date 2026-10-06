@@ -14,9 +14,9 @@
 <section class="hero">
     <div class="hero-main">
         <h1 class="hero-title">{{ site.Title }}</h1>
-        <p class="hero-desc">하루에 하나, 어제의 AI 이슈. 쏟아지는 소식 중 실제로 의미 있는 일만 골라 5분이면 읽히는 브리핑으로 정리합니다. 모델 출시 · 산업 · 정책, AI 업계의 흐름을 놓치지 마세요.</p>
+        <p class="hero-desc">AI 도구, 뭘 쓸지 막힐 때 한 편으로 끝. ChatGPT·제미나이 등 주요 서비스의 사용법과 요금·무료 한도를 주제별 총정리로 정리합니다. 이미지 · 영상 · 문서 · 업무 자동화, 도구 선택이 고민될 때 여기서 해결하세요.</p>
         <div class="hero-cta">
-            <a class="btn btn-primary" href="{{ "/posts/" | relURL }}">오늘의 이슈 읽기</a>
+            <a class="btn btn-primary" href="{{ "/posts/" | relURL }}">전체 가이드 보기</a>
             <a class="btn btn-ghost" href="{{ "/series/데일리-브리핑/" | relURL }}">데일리 브리핑</a>
         </div>
         <div class="hero-chips">
@@ -29,7 +29,7 @@
         <div class="hero-recent">
             <div class="hero-recent-head">
                 <h2 class="hero-recent-title">최근 업데이트</h2>
-                <span class="hero-recent-stats">브리핑 {{ sub (len $pages) (len $guides) }}편 · 가이드 {{ len $guides }}편</span>
+                <span class="hero-recent-stats">가이드 {{ len $guides }}편 · 브리핑 {{ sub (len $pages) (len $guides) }}편</span>
             </div>
             <ul class="hero-recent-list">
                 {{- range first 3 (after 1 $pages) }}
@@ -47,7 +47,7 @@
     </div>
     <div class="hero-side">
         <form class="hero-search" action="{{ "/search/" | relURL }}" method="get" role="search">
-            <input type="search" name="q" placeholder="궁금한 AI 이슈를 검색해보세요" aria-label="검색어" autocomplete="off">
+            <input type="search" name="q" placeholder="궁금한 AI 도구·사용법을 검색해보세요" aria-label="검색어" autocomplete="off">
             <button class="btn btn-primary" type="submit">검색</button>
         </form>
         {{- with $featured }}
