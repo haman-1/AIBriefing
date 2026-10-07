@@ -100,6 +100,7 @@ OpenAI의 대화형 AI다. "비즈니스 이메일 어조로", "법률 문서 �
 
 ## 관련 글
 
+- [AI 번역 부업 현실 — 크몽·숨고·플리토 단가와 시작 절차](/posts/ai-translation-side-income-guide/)
 - [ChatGPT vs Gemini vs Claude 비교 총정리 — 2026년 9월 요금제·성능·한국 가격](/posts/chatgpt-vs-gemini-vs-claude-2026/)
 - [ChatGPT 이메일 작성 프롬프트 총정리 — 상황별 초안 예시와 톤 조절](/posts/chatgpt-email-writing-guide/)
 - [ChatGPT 보고서 요약 총정리 — 한글 HWP 업로드부터 프롬프트·검증 절차까지](/posts/chatgpt-report-summary-guide/)
