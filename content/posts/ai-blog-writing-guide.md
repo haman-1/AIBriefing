@@ -112,7 +112,7 @@ images: ['covers/ai-blog-writing-guide.jpg']
 
 AI 블로그 글쓰기의 성패는 도구가 아니라 분업에 있습니다. 질문 정하기·사실 확인·경험 더하기·투명하게 밝히기는 사람이, 구조 잡기와 초안은 AI가 맡는 것입니다. 구글은 독자에게 도움이 되는지를, 네이버는 AI가 인용할 만한 직접 경험인지를 기준으로 글을 가립니다. 두 기준 모두 "AI가 쓴 글인가"가 아니라 "읽을 가치가 있는 글인가"를 묻고 있다는 점이 핵심입니다.
 
-관련 글: [AI로 인스타그램 콘텐츠 만들기 총정리](/posts/ai-instagram-content-guide/) · [ChatGPT 이메일 작성 프롬프트 총정리](/posts/chatgpt-email-writing-guide/) · [AI로 돈 버는 방법 총정리](/posts/ai-side-income-guide/)
+관련 글: [AI로 인스타그램 콘텐츠 만들기 총정리](/posts/ai-instagram-content-guide/) · [ChatGPT 이메일 작성 프롬프트 총정리](/posts/chatgpt-email-writing-guide/) · [AI로 돈 버는 방법 총정리](/posts/ai-side-income-guide/) · [AI 전자책 만들기 — 제작 절차와 판매 플랫폼 수수료 비교](/posts/ai-ebook-side-income-guide/)
 
 ## 출처
 
