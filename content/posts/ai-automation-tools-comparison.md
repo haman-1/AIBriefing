@@ -104,6 +104,7 @@ AI 기능은 세 도구 중 가장 깊습니다. AI 에이전트 노드, MCP 서
 
 ## 관련 글
 
+- [AI 자동화 구축 외주 총정리 — 단가와 시작 절차, 잼퍼·메이크·n8n까지](/posts/ai-automation-outsourcing-guide/)
 - [MS 코파일릿 사용법 총정리 — 무료 기능과 개인용 요금제 가격](/posts/microsoft-copilot-guide/)
 - [AI 회의록 자동 정리 총정리 — 클로바노트·다글로 가격 비교와 회의록 프롬프트](/posts/ai-meeting-notes-guide/)
 - [ChatGPT 보고서 요약 총정리 — 한글 HWP 업로드부터 프롬프트·검증 절차까지](/posts/chatgpt-report-summary-guide/)
