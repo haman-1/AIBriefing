@@ -22,6 +22,23 @@ pygmentsUseClasses = true
   tag = 'tags'
   series = 'series'
 
+# 태그·카테고리·시리즈 목록 페이지는 색인 제외.
+# 태그 84개에 글 배정이 147건뿐이라 대부분 1~2편짜리 얇은 목록이고,
+# 그런 페이지가 90여 개 색인되면 사이트 단위 품질 평가가 끌어내려진다.
+# noindex는 "크롤은 허용, 색인만 제외" — robots.txt 차단과 달리 구글이 메타를 읽을 수 있다.
+# (사이트맵은 layouts/sitemap.xml에서 이미 제외 중)
+[[cascade]]
+  [cascade._target]
+    kind = 'term'
+  [cascade.params]
+    robotsNoIndex = true
+
+[[cascade]]
+  [cascade._target]
+    kind = 'taxonomy'
+  [cascade.params]
+    robotsNoIndex = true
+
 # 포스트 URL을 파일명 기반으로 — 짧고 안정적이라 SEO에 유리
 # (:slug는 slug 미지정 시 한글 제목으로 폴백하므로 영문 파일명을 쓰는 :filename 사용)
 [permalinks]
