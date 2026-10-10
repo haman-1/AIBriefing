@@ -133,7 +133,7 @@ OpenAI는 **2026년 4월 17일부로 HWP·HWPX 지원을 추가**했다. 한글 
 ## 관련 글
 
 - [ChatGPT vs Gemini vs Claude 비교 총정리 — 2026년 9월 요금제·성능·한국 가격](/posts/chatgpt-vs-gemini-vs-claude-2026/)
-- [ChatGPT 엑셀 수식 만들기 총정리 — 프롬프트 패턴과 =COPILOT 폐지 대안](/posts/chatgpt-excel-formulas-guide/)
+- [ChatGPT 엑셀 수식 프롬프트 3요소 — 셀 참조 오류 없이 뽑는 법](/posts/chatgpt-excel-formulas-guide/)
 - [회계사가 쓰는 ChatGPT 프롬프트 10개 — 전표·마감·보고서 업무 자동화 총정리](/posts/chatgpt-prompts-for-accountants/)
 - [UBS "AI 활용 능력 없인 뽑지 않는다" — 2027년 신입·인턴 채용부터 필수](/posts/ubs-2027-hiring-requires-ai-skills/)
 

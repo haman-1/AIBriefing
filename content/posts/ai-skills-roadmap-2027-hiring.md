@@ -121,7 +121,7 @@ WEF의 추정으로 초급 수준까지 30시간이다. 하루 한 시간씩 한
 
 - [UBS "AI 활용 능력 없인 뽑지 않는다" — 2027년 신입·인턴 채용부터 필수](/posts/ubs-2027-hiring-requires-ai-skills/)
 - [ChatGPT 보고서 요약 총정리 — 한글 HWP 업로드부터 프롬프트·검증 절차까지](/posts/chatgpt-report-summary-guide/)
-- [ChatGPT 엑셀 수식 만들기 총정리 — 프롬프트 패턴과 =COPILOT 폐지 대안](/posts/chatgpt-excel-formulas-guide/)
+- [ChatGPT 엑셀 수식 프롬프트 3요소 — 셀 참조 오류 없이 뽑는 법](/posts/chatgpt-excel-formulas-guide/)
 - [회계사가 쓰는 ChatGPT 프롬프트 10개 — 전표·마감·보고서 업무 자동화 총정리](/posts/chatgpt-prompts-for-accountants/)
 - [ChatGPT vs Gemini vs Claude 비교 총정리 — 2026년 9월 요금제·성능·한국 가격](/posts/chatgpt-vs-gemini-vs-claude-2026/)
 - [내년 정부 AI 예산 9.4조 원, 84% 늘어난다 — 어디에 쓰이나](/posts/korea-2027-ai-budget-9-4-trillion-won/)

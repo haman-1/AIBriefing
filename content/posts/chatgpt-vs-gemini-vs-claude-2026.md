@@ -137,7 +137,7 @@ Gemini 3.8 Flash는 이 표에 넣을 숫자를 공개하지 않았다. 구글�
 - [Gemini 3.8 Flash 가격·사용법 총정리 — API 도입가와 무료 티어, 2027년 인상 전망](/posts/gemini-3-8-flash-guide/)
 - [OpenAI, GPT-6 Astra 공개 — 컴퓨터를 직접 쓰는 AI의 시대](/posts/openai-gpt-6-astra-launch/)
 - [클로드가 쓴 글에는 흔적이 남는다 — Anthropic 워터마킹의 원리와 한계](/posts/anthropic-claude-text-watermark-detection-api/)
-- [ChatGPT 엑셀 수식 만들기 총정리 — 프롬프트 패턴과 =COPILOT 폐지 대안](/posts/chatgpt-excel-formulas-guide/)
+- [ChatGPT 엑셀 수식 프롬프트 3요소 — 셀 참조 오류 없이 뽑는 법](/posts/chatgpt-excel-formulas-guide/)
 
 ## 출처
 

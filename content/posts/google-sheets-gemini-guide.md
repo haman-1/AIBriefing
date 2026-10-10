@@ -85,13 +85,13 @@ images: ['covers/google-sheets-gemini-guide.jpg']
 - **엑셀 파일은 변환 필요** — .xlsx는 그대로 두면 잘 작동하지 않습니다. "파일 → Google Sheets로 저장"으로 바꾼 뒤 써야 합니다.
 - **대화 기록이 남지 않음** — 시트의 Gemini 대화는 Gemini 활동에 저장되지 않습니다. 시트에 삽입하지 않은 결과물은 새로고침하거나 시트를 닫았다 다시 열면 사라집니다.
 - **차트는 정적** — 한 번 만든 차트는 원본 데이터를 바꿔도 따라갱신되지 않습니다.
-- **생성물 검증은 필수** — 구글 스스로 결과가 부정확할 수 있다고 안내하며, 의료·법률·금융 등 전문가 조언으로 신뢰할 수 없다고 명시합니다. 수식은 특히 직접 실행해 확인해야 합니다. 엑셀 수식 검증 흐름은 [ChatGPT 엑셀 수식 만들기 총정리](/posts/chatgpt-excel-formulas-guide/)에서 같은 방식으로 다룹니다.
+- **생성물 검증은 필수** — 구글 스스로 결과가 부정확할 수 있다고 안내하며, 의료·법률·금융 등 전문가 조언으로 신뢰할 수 없다고 명시합니다. 수식은 특히 직접 실행해 확인해야 합니다. 엑셀 수식 검증 흐름은 [ChatGPT 엑셀 수식 프롬프트 3요소](/posts/chatgpt-excel-formulas-guide/)에서 같은 방식으로 다룹니다.
 - **공유 시트 주의** — 도메인 밖 사용자와 공유된 파일은 Gemini 결과가 외부 사용자에게 보일 수 있다는 경고가 뜰 수 있습니다.
 - **일부 언어 제한** — 지원 언어가 제한적이고, 언어에 따라 Gem을 못 쓰는 경우가 있습니다.
 
 ## 엑셀 사용자라면
 
-엑셀을 주력으로 쓰는 입장에서 "시트의 Gemini"는 통째로 시트를 옮겨야 쓸 수 있는 기능입니다. 매월 반복하는 집계라면 시트로 옮겨 자동화하는 편이 이득이고, 한두 번 쓸 수식이라면 챗GPT 같은 대화형 AI에게 수식을 만들어 달라고 하는 편이 가볍습니다. 두 방식의 장단과 프롬프트 패턴은 [ChatGPT 엑셀 수식 만들기 총정리](/posts/chatgpt-excel-formulas-guide/)에서, 구글 생태계 안의 다른 AI 도구는 [제미나이 노트북 가격·무료 한도 총정리](/posts/gemini-notebook-guide/)와 [Gemini 3.8 Flash 가격·사용법 총정리](/posts/gemini-3-8-flash-guide/)에서 이어서 볼 수 있습니다. 통합 비교는 [ChatGPT vs Gemini vs Claude 비교 총정리](/posts/chatgpt-vs-gemini-vs-claude-2026/)에 있습니다.
+엑셀을 주력으로 쓰는 입장에서 "시트의 Gemini"는 통째로 시트를 옮겨야 쓸 수 있는 기능입니다. 매월 반복하는 집계라면 시트로 옮겨 자동화하는 편이 이득이고, 한두 번 쓸 수식이라면 챗GPT 같은 대화형 AI에게 수식을 만들어 달라고 하는 편이 가볍습니다. 두 방식의 장단과 프롬프트 패턴은 [ChatGPT 엑셀 수식 프롬프트 3요소](/posts/chatgpt-excel-formulas-guide/)에서, 구글 생태계 안의 다른 AI 도구는 [제미나이 노트북 가격·무료 한도 총정리](/posts/gemini-notebook-guide/)와 [Gemini 3.8 Flash 가격·사용법 총정리](/posts/gemini-3-8-flash-guide/)에서 이어서 볼 수 있습니다. 통합 비교는 [ChatGPT vs Gemini vs Claude 비교 총정리](/posts/chatgpt-vs-gemini-vs-claude-2026/)에 있습니다.
 
 ## 자주 묻는 질문
 

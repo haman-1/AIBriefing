@@ -97,7 +97,7 @@ CSV·XLSX·XLS 같은 스프레드시트가 기본입니다. PDF, JSON, XML, TXT
 
 ## 엑셀·구글 시트 사용자라면
 
-- 엑셀에서 쓸 수식을 챗GPT로 뽑아내는 방법 — [ChatGPT 엑셀 수식 만들기 총정리](/posts/chatgpt-excel-formulas-guide/)
+- 엑셀에서 쓸 수식을 챗GPT로 뽑아내는 방법 — [ChatGPT 엑셀 수식 프롬프트 3요소](/posts/chatgpt-excel-formulas-guide/)
 - 구글 시트 안에서 쓰는 제미나이 — [구글 시트 AI 사용법 총정리](/posts/google-sheets-gemini-guide/)
 - 엑셀·워드 안에서 바로 쓰는 코파일럿 — [MS 코파일럿 사용법 총정리](/posts/microsoft-copilot-guide/)
 - PDF 요약 도구의 업로드 한도 비교 — [AI PDF 요약 도구 비교 총정리](/posts/ai-pdf-summary-tools-comparison/)
